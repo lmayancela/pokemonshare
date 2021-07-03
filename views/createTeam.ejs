@@ -1,0 +1,53 @@
+
+<div class="container">
+  <div class="jumbotron">
+    <h1> Create a Team </h1>
+    <h2> Enter the names of the pokemon on your team below </h2>
+  </div>
+  <div>
+    <form action="/addPokemon" method="POST">
+      <input type="text" size="60" name="name">
+      <input type="submit" value="Add Pokemon to Team">
+    </form>
+  </div>
+  <% if(curr_team.length > 0){ %>
+    <div>
+      <h2> Current Team </h2>
+      <table class="table table-bordered table-striped">
+        <thead>
+            <th>name</th>
+            <th>types</th>
+            <th>stats</th>
+            <th>sprite</th>
+        </thead>
+        <tbody>
+            <% curr_team.forEach(element=> { %>
+                <tr>
+                    <td>
+                        <%=element.name%>
+                    </td>
+                    <td>
+                        <%=element.type%>
+                    </td>
+                    <td>
+                        <%=element.stats%>
+                    </td>
+                    <td>
+                        <img src=<%=element.sprite%>>
+                    </td>
+                </tr>
+                <% }); %>
+        </tbody>
+      </table>
+    </div>
+    <div>
+        <form action="/saveTeam" method="POST">
+          Enter Team Name: <input type="text" size="60" name="name">
+          <input type="submit" value="Save Team to Profile">
+        </form>
+        <form action="/clearTeam" method="POST">
+          <input type="submit" value="Clear Team">
+        </form>
+    </div>
+  <% } %>
+</div>

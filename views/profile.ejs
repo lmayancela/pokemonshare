@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="jumbotron">
+    <h1>Your Teams</h1>
+    <p> Below are all of your currently saved teams </p>
+  </div>
+  <div>
+    <% console.log(teams) %>
+    <% if(teams.length > 0){ %>
+      <% teams.forEach(team => { %>
+        <div>
+          <h1> <%=team.name%> </h1>
+          <table class="table table-bordered table-striped">
+            <thead>
+                <th>name</th>
+                <th>types</th>
+                <th>stats</th>
+                <th>sprite</th>
+            </thead>
+            <tbody>
+                <% JSON.parse(team.pokemon).forEach(element => { %>
+                    <tr>
+                        <td>
+                            <%=element.name%>
+                        </td>
+                        <td>
+                            <%=element.type%>
+                        </td>
+                        <td>
+                            <%=element.stats%>
+                        </td>
+                        <td>
+                            <img src=<%=element.sprite%>>
+                        </td>
+                    </tr>
+                    <% }); %>
+            </tbody>
+          </table>
+        </div>
+        <hr>
+      <% }); %>
+    <% } else { %>
+      You don't have any teams saved yet... <br>
+      You can create a team <a href="/createTeam"> here </a>
+    <% } %>
+  </div>
+</div>

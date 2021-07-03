@@ -1,0 +1,15 @@
+<div class="jumbotron">
+  <h1>Registered Users</h1>
+  <p> Select a user to see their saved teams </p>
+</div>
+<hr>
+<ol>
+  <% console.log(profiles) %>
+  <% profiles.forEach(profile => { %>
+    <li>
+          <%= profile.googleemail %>
+          <a href="/publicprofile/<%= profile._id %>">
+            (link)</a>
+    </li>
+  <% }) %>
+</ol>

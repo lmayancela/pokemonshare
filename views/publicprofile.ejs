@@ -1,0 +1,42 @@
+<div class="jumbotron">
+  <h1><%= profile.googlename %>'s Profile</h1>
+  <p> Check out my teams! </p>
+</div>
+<div>
+  <% if(teams.length > 0){ %>
+    <% teams.forEach(team => { %>
+      <div>
+        <h1> <%=team.name%> </h1>
+        <table class="table table-bordered table-striped">
+          <thead>
+              <th>name</th>
+              <th>types</th>
+              <th>stats</th>
+              <th>sprite</th>
+          </thead>
+          <tbody>
+              <% JSON.parse(team.pokemon).forEach(element => { %>
+                  <tr>
+                      <td>
+                          <%=element.name%>
+                      </td>
+                      <td>
+                          <%=element.type%>
+                      </td>
+                      <td>
+                          <%=element.stats%>
+                      </td>
+                      <td>
+                          <img src=<%=element.sprite%>>
+                      </td>
+                  </tr>
+                  <% }); %>
+          </tbody>
+        </table>
+      </div>
+      <hr>
+    <% }); %>
+  <% } else { %>
+    This user hasn't made any teams yet...
+  <% } %>
+</div>
